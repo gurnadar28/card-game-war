@@ -83,7 +83,7 @@ public class WarCardTest {
         System.out.println("isHigherRank Good");
         WarCard card1 = new WarCard(Suit.HEARTS, Rank.ACE);
         WarCard card2 = new WarCard(Suit.SPADES, Rank.KING);
-        boolean expResult = true; // Since ACE is higher than KING
+        boolean expResult = true; // card1 rank is higher than card2 rank
         boolean result = WarCard.isHigherRank(card1, card2);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -95,7 +95,7 @@ public class WarCardTest {
         System.out.println("isHigherRank Bad");
         WarCard card1 = new WarCard(Suit.HEARTS, Rank.KING);
         WarCard card2 = new WarCard(Suit.SPADES, Rank.ACE);
-        boolean expResult = false; // Since KING is not higher than ACE
+        boolean expResult = false; // card1 rank is lower than card2 rank
         boolean result = WarCard.isHigherRank(card1, card2);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -105,9 +105,9 @@ public class WarCardTest {
     @Test
     public void testIsHigherRankBoundary() {
         System.out.println("isHigherRank Boundary");
-        WarCard card1 = new WarCard(Suit.CLUBS, Rank.TWO); // Simulate lowest card
-        WarCard card2 = new WarCard(Suit.CLUBS, Rank.TWO); // Simulate lowest card
-        boolean expResult = false; // Since both cards are the same and lowest
+        WarCard card1 = new WarCard();
+        WarCard card2 = new WarCard();
+        boolean expResult = false; // Both cards are simulated empty
         boolean result = WarCard.isHigherRank(card1, card2);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

@@ -91,10 +91,10 @@ public class WarGame extends Game {
         System.out.println(player2.getName() + " plays " + card2);
         System.out.println();
 
-        if (card1.isHigherRank(card2)) {
+        if (WarCard.isHigherRank(card1, card2)) {
             System.out.println(player1.getName() + " wins the round.");
             player1.collectCards(card1, card2);
-        } else if (card2.isHigherRank(card1)) {
+        } else if (WarCard.isHigherRank(card2, card1)) {
             System.out.println(player2.getName() + " wins the round.");
             player2.collectCards(card1, card2);
         } else {
@@ -182,18 +182,18 @@ public class WarGame extends Game {
             System.out.println(player2.getName() + " plays " + warCard2 + " in war");
             System.out.println();
 
-            if (warCard1.isHigherRank(warCard2)) {
-                System.out.println(player1.getName() + " wins the war.");
+            if (WarCard.isHigherRank(warCard1, warCard2)) {
+                System.out.println(" ** " + player1.getName() + " wins the war. **");
                 player1.collectCards(warPile.toArray(new WarCard[0]));
                 player1.collectCards(warCard1, warCard2);
                 return;
-            } else if (warCard2.isHigherRank(warCard1)) {
+            } else if (WarCard.isHigherRank(warCard2, warCard1)) {
                 System.out.println(player2.getName() + " wins the war.");
                 player2.collectCards(warPile.toArray(new WarCard[0]));
                 player2.collectCards(warCard1, warCard2);
                 return;
             } else {
-                System.out.println("The war is a tie! Continuing war...");
+                System.out.println("The war is a tie! Continuing war.");
                 warPile.add(warCard1);
                 warPile.add(warCard2);
             }
@@ -201,13 +201,16 @@ public class WarGame extends Game {
     }
 
     /**
-     * Method to check if two cards are of the same rank.
+     * Static Method to check if two cards are of the same rank.
      *
      * @param card1 The first card.
      * @param card2 The second card.
      * @return True if the cards are of the same rank, false otherwise.
      */
-    public boolean isTie(WarCard card1, WarCard card2) {
+    public static boolean isTie(WarCard card1, WarCard card2) {
+        if (card1 == null || card2 == null || card1.getRank() == null || card2.getRank() == null) {
+            return false;
+        }
         return card1.getRank().ordinal() == card2.getRank().ordinal();
     }
 

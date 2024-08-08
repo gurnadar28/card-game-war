@@ -16,6 +16,11 @@ public class WarCard extends Card {
     private final Suit suit;
     private final Rank rank;
 
+    public WarCard() {
+        this.suit = null;
+        this.rank = null;
+    }
+
     public WarCard(Suit suit, Rank rank) {
         this.suit = suit;
         this.rank = rank;
@@ -43,7 +48,9 @@ public class WarCard extends Card {
      * @return True if the first card's rank is higher, false otherwise.
      */
     public static boolean isHigherRank(WarCard card1, WarCard card2) {
+        if (card1 == null || card2 == null || card1.getRank() == null || card2.getRank() == null) {
+            return false;
+        }
         return card1.getRank().ordinal() > card2.getRank().ordinal();
     }
-
 }
