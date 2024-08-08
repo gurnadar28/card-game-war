@@ -11,6 +11,9 @@ import java.util.List;
  *
  * @author user
  */
+/**
+ * Class representing a deck of cards for the War game.
+ */
 public class WarDeck extends GroupOfCards {
 
     public WarDeck() {

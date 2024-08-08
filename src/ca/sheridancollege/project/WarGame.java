@@ -1,22 +1,23 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
-*/
+ */
 package ca.sheridancollege.project;
 
 /**
  *
  * @author user
-*/
-
+ */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Class representing the War game.
+ * Class representing the War game. This class manages the gameplay, including
+ * shuffling the deck, dealing cards, playing rounds, and handling wars.
  */
 public class WarGame extends Game {
+
     private WarDeck deck;
     private WarPlayer player1;
     private WarPlayer player2;
@@ -30,6 +31,10 @@ public class WarGame extends Game {
         this.roundNumber = 0;
     }
 
+    /**
+     * Method to start and play the game. This method shuffles the deck, deals
+     * the cards, and manages the rounds until one player runs out of cards.
+     */
     @Override
     public void play() {
         deck.shuffle();
@@ -69,6 +74,11 @@ public class WarGame extends Game {
         declareWinner();
     }
 
+    /**
+     * Method to play a single round of the game.
+     *
+     * @param scanner Scanner object to read user input.
+     */
     private void playRound(Scanner scanner) {
         roundNumber++;
 
@@ -100,6 +110,13 @@ public class WarGame extends Game {
         System.out.println();
     }
 
+    /**
+     * Method to get a card chosen by the user.
+     *
+     * @param scanner Scanner object to read user input.
+     * @param player The player who is choosing the card.
+     * @return The card chosen by the user.
+     */
     private WarCard getUserCard(Scanner scanner, WarPlayer player) {
         System.out.println(player.getName() + ", choose a card to play:");
         for (int i = 0; i < player.getHand().size(); i++) {
@@ -118,6 +135,14 @@ public class WarGame extends Game {
         return player.getHand().remove(choice);
     }
 
+    /**
+     * Method to handle the "war" scenario when both players play cards of the
+     * same rank.
+     *
+     * @param card1 The card played by player 1.
+     * @param card2 The card played by player 2.
+     * @param scanner Scanner object to read user input.
+     */
     private void handleWar(WarCard card1, WarCard card2, Scanner scanner) {
         List<WarCard> warPile = new ArrayList<>();
         warPile.add(card1);
@@ -175,10 +200,20 @@ public class WarGame extends Game {
         }
     }
 
+    /**
+     * Method to check if two cards are of the same rank.
+     *
+     * @param card1 The first card.
+     * @param card2 The second card.
+     * @return True if the cards are of the same rank, false otherwise.
+     */
     public boolean isTie(WarCard card1, WarCard card2) {
         return card1.getRank().ordinal() == card2.getRank().ordinal();
     }
 
+    /**
+     * Method to declare the winner of the game.
+     */
     @Override
     public void declareWinner() {
         if (player1.getHand().isEmpty()) {

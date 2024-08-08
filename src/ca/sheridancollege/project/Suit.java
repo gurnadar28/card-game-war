@@ -8,7 +8,10 @@ package ca.sheridancollege.project;
  *
  * @author user
  */
+/**
+ * Enum representing the suits of a standard deck of cards.
+ */
 public enum Suit {
     HEARTS, DIAMONDS, CLUBS, SPADES
-    
+
 }

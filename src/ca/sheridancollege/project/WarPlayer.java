@@ -11,7 +11,11 @@ import java.util.List;
  *
  * @author user
  */
+/**
+ * Class representing a player in the War game.
+ */
 public class WarPlayer extends Player {
+
     private List<WarCard> hand;
 
     public WarPlayer(String name) {
@@ -27,6 +31,11 @@ public class WarPlayer extends Player {
         this.hand = hand;
     }
 
+    /**
+     * Method to collect cards won in a round.
+     *
+     * @param cards The cards to be collected.
+     */
     public void collectCards(WarCard... cards) {
         System.out.println(this.getName() + " collects cards:");
         for (WarCard card : cards) {
@@ -35,6 +44,11 @@ public class WarPlayer extends Player {
         }
     }
 
+    /**
+     * Method to check if the player has cards left.
+     *
+     * @return True if the player has cards, false otherwise.
+     */
     public boolean hasCards() {
         return !hand.isEmpty();
     }

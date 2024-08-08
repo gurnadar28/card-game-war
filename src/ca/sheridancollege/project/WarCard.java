@@ -8,6 +8,9 @@ package ca.sheridancollege.project;
  *
  * @author user
  */
+/**
+ * Class representing a card in the War game.
+ */
 public class WarCard extends Card {
 
     private final Suit suit;
@@ -31,6 +34,12 @@ public class WarCard extends Card {
         return rank + " of " + suit;
     }
 
+    /**
+     * Method to check if the rank of this card is higher than another card.
+     *
+     * @param other The other card to compare with.
+     * @return True if this card's rank is higher, false otherwise.
+     */
     public boolean isHigherRank(WarCard other) {
         return this.rank.ordinal() > other.rank.ordinal();
     }
