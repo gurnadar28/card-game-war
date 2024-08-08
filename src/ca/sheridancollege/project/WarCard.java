@@ -35,13 +35,15 @@ public class WarCard extends Card {
     }
 
     /**
-     * Method to check if the rank of this card is higher than another card.
+     * Static method to check if the rank of the first card is higher than
+     * another card.
      *
-     * @param other The other card to compare with.
-     * @return True if this card's rank is higher, false otherwise.
+     * @param card1 The first card.
+     * @param card2 The second card.
+     * @return True if the first card's rank is higher, false otherwise.
      */
-    public boolean isHigherRank(WarCard other) {
-        return this.rank.ordinal() > other.rank.ordinal();
+    public static boolean isHigherRank(WarCard card1, WarCard card2) {
+        return card1.getRank().ordinal() > card2.getRank().ordinal();
     }
 
 }
