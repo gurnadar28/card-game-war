@@ -47,9 +47,10 @@ public class WarPlayer extends Player {
     /**
      * Method to check if the player has cards left.
      *
+     * @param hand
      * @return True if the player has cards, false otherwise.
      */
-    public boolean hasCards() {
+    public static boolean hasCards(List<WarCard> hand) {
         return !hand.isEmpty();
     }
 
